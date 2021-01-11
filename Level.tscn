@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Wall.tscn" type="PackedScene" id=1]
+[ext_resource path="res://PlayerBall.tscn" type="PackedScene" id=2]
+[ext_resource path="res://level2.gd" type="Script" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 30.9445
+
+[node name="Level" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Wall" parent="Node2D" instance=ExtResource( 1 )]
+position = Vector2( 159.118, 3.87672 )
+scale = Vector2( 20, 1 )
+
+[node name="Wall2" parent="Node2D" instance=ExtResource( 1 )]
+position = Vector2( 159.118, 173.56 )
+scale = Vector2( 20, 1 )
+
+[node name="Wall3" parent="Node2D" instance=ExtResource( 1 )]
+position = Vector2( 6.29054, 87.8808 )
+rotation = -1.5708
+scale = Vector2( 20, 1 )
+
+[node name="Wall4" parent="Node2D" instance=ExtResource( 1 )]
+position = Vector2( 320.935, 87.8808 )
+rotation = -1.5708
+scale = Vector2( 20, 1 )
+
+[node name="Wall5" parent="Node2D" instance=ExtResource( 1 )]
+position = Vector2( 240.776, 168.415 )
+rotation = -0.785398
+scale = Vector2( 20, 1 )
+
+[node name="Wall6" parent="Node2D" instance=ExtResource( 1 )]
+position = Vector2( 27.2668, 52.6706 )
+rotation = -0.570238
+scale = Vector2( 20, 1 )
+
+[node name="Wall7" parent="Node2D" instance=ExtResource( 1 )]
+position = Vector2( 337.042, -93.4144 )
+rotation = -0.570238
+scale = Vector2( 20, 10 )
+
+[node name="Wall8" parent="Node2D" instance=ExtResource( 1 )]
+position = Vector2( 39.0363, 270.072 )
+rotation = -0.570238
+scale = Vector2( 20, 10 )
+
+[node name="PlayerBall" parent="." instance=ExtResource( 2 )]
+position = Vector2( 151.898, 79.7354 )
+
+[node name="level2" type="Sprite" parent="."]
+position = Vector2( 279.743, 65.4812 )
+texture = ExtResource( 4 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="level2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level2/Area2D"]
+shape = SubResource( 1 )
+[connection signal="area_entered" from="level2/Area2D" to="PlayerBall" method="_on_Area2D_area_entered"]
+[connection signal="area_entered" from="level2/Area2D" to="level2" method="_on_Area2D_area_entered"]
